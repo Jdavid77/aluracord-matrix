@@ -113,7 +113,7 @@ export default function PaginaInicial() {
                     textColor: appConfig.theme.colors.neutrals[200],
                     mainColor: appConfig.theme.colors.neutrals[900],
                     mainColorHighlight: appConfig.theme.colors.primary[1000],
-                    backgroundColor: appConfig.theme.colors.neutrals[800],
+                    backgroundColor: "rgba(255,255,255,0.5)"//appConfig.theme.colors.neutrals[800],
                   },
                 }}
               />
@@ -147,6 +147,7 @@ export default function PaginaInicial() {
                 flex: 1,
                 minHeight: '240px',
                 //border: `solid 1px ${appConfig.theme.colors.primary[1000]}`
+                boxShadow: '0px 0px 10px 3px rgba(255,255,255,0.5)'
               }}
             >
               <Image
