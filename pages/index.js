@@ -2,6 +2,7 @@ import { Box, Button, Text, TextField, Image } from "@skynexui/components"
 import appConfig from "../config.json"
 
 
+
 function GlobalStyle() {
     return (
         <style global jsx>{`
@@ -39,11 +40,13 @@ function Titulo(props) {
     return (
         <>
             <Tag>{props.children}</Tag>
-            <style jsx>{`${Tag} {
+            <style jsx>{`           
+            ${Tag} {
              color : white;
              font-size : 24px;
              font-weight : 600;
              text-shadow : 2px 2px ${appConfig.theme.colors.primary[1000]}
+             
              }`}
             </style>
         </>
@@ -90,7 +93,9 @@ export default function PaginaInicial() {
               borderRadius: '20px', padding: '32px', margin: '16px',
               boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
               backgroundColor: 'rgba(0,0,0,0.5)',
-              border: `solid 1px ${appConfig.theme.colors.primary[1000]}`
+              border: `solid 1px ${appConfig.theme.colors.primary[1000]}`,
+              boxShadow: `0px 0px 10px 3px  ${appConfig.theme.colors.primary[1000]}`
+              
             }}
           >
             {/* Formulário */}
