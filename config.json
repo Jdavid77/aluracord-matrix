@@ -1,5 +1,5 @@
 {
-    "name": "Aluracord - Matrix (peas)",
+    "name": "Aluracord - Sharingan Version",
     "theme": {
         "colors": {
             "primary": {
@@ -12,7 +12,9 @@
                 "600": "#2F8132",
                 "700": "#207227",
                 "800": "#0E5814",
-                "900": "#05400A"
+                "900": "#05400A",
+                "1000" : "#92140C",
+                "1100" : "#711009"
             },
             "neutrals": {
                 "000": "#FFFFFF",
