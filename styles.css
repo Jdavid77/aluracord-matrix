@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Wallpoet&display=swap');
+
+.sharingan button {
+  cursor: pointer;
+  font-weight: bold;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  border: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.sharingan button:hover {
+    height: 40px;
+    width: 40px;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-inner {
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    background-color: rgba(146, 20, 12,0.8);
+    max-width: 640px;
+    height: 500px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    font-family: Wallpoet, sans-serif;
+    font-size: 20px;
+    
+    
+}
+
+.popup-inner p {
+    color: #FFF;
+    font-weight: bold;
+    
+}
+
+.popup-inner a {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 20px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    height: 20px;
+    width: 20px;
+
+}
