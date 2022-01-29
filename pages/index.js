@@ -2,7 +2,10 @@ import { Box, Button, Text, TextField, Image } from "@skynexui/components"
 import React from "react";
 import { useRouter } from "next/router"
 import appConfig from "../config.json"
-import ImageNext from "next/image"
+import Slide from "@mui/material/Slide";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+
 
 
 
@@ -11,11 +14,11 @@ function PopUp(props) {
   return (props.trigger) ? (
     <div className="popup">
       <div className="popup-inner">
-        <button className="close-btn" onClick={() => props.setTrigger(false)}></button>
+        <button className="close-btn" onClick={() => props.setTrigger(false)}>X</button>
         <Image height="150px" width="150px" src={props.pfp}
-        styleSheet={{
-          borderRadius : "50%"
-        }}></Image>
+          styleSheet={{
+            borderRadius: "50%"
+          }}></Image>
         <p>Nome : {props.name}</p>
         <p>Bio : {props.bio}</p>
         <p>Localização : {props.location}</p>
@@ -79,23 +82,47 @@ export default function PaginaInicial() {
 
   const [username, setUsername] = React.useState('Jdavid77')
   const roteamento = useRouter();
-  const [popup,setpopup] = React.useState(false)
-  
+  const [popup, setpopup] = React.useState(false)
+
   const [name, setName] = React.useState("");
   const [followers, setFollowers] = React.useState("");
   const [location, setLocation] = React.useState("");
-  const [bio,setBio] = React.useState("");
+  const [bio, setBio] = React.useState("");
+  const [checked, setChecked] = React.useState(false);
 
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  };
 
-  const dados = fetch(`https://api.github.com/users/${username}`)
-   .then(function(response){
-     return response.json();
-   }).then (function(responseConverted) {
-      setName(responseConverted.name);
-      setFollowers(responseConverted.followers);
-      setLocation(responseConverted.location);
-      setBio(responseConverted.bio);
-   })
+  React.useEffect(() => {
+    const dados = fetch(`https://api.github.com/users/${username}`)
+      .then(function (response) {
+        return response.json();
+      }).then(function (responseConverted) {
+        setName(responseConverted.name);
+        setFollowers(responseConverted.followers);
+        setLocation(responseConverted.location);
+        setBio(responseConverted.bio);
+      })
+
+  }, [handleChange])
+
+  const slider = (
+    <div className="popup">
+      <div className="popup-inner">
+        <button className="close-btn" onClick={() => handleChange()}>X</button>
+        <Image height="150px" width="150px" src={`https://github.com/${username}.png`}
+          styleSheet={{
+            borderRadius: "50%"
+          }}></Image>
+        <p>Nome : {name}</p>
+        <p>Bio : {bio}</p>
+        <p>Localização : {location}</p>
+        <p>Seguidores : {followers}</p>
+        <a href={`https://github.com/${username}`}>Visitar</a>
+      </div>
+    </div>
+  )
 
   
 
@@ -138,8 +165,7 @@ export default function PaginaInicial() {
               if (username.length > 2) {
                 event.preventDefault();
                 console.log("Alguém submeteu o form!!")
-                roteamento.push("/chat")
-
+                roteamento.push(`/chat?username=${username}`)
               }
 
             }}
@@ -230,11 +256,27 @@ export default function PaginaInicial() {
             </Text>
             <br />
             {username.length > 2 ? (
-              <div className="sharingan">
-                <button onClick={function handler() { setpopup(true)}}><Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Mangekyou_Sharingan_Kakashi.svg/640px-Mangekyou_Sharingan_Kakashi.svg.png" /></button>
-                {/*<PopUp trigger={popup}></PopUp>*/}
-              </div>
-              ) : ""}
+
+              <>
+                <FormControlLabel
+                  control={<Switch color="warning" checked={checked} onChange={handleChange} />}
+                  label="Info"
+                  sx={{
+                    color: "white",
+                    fontWeight: "bold",
+                    
+                  }}
+                />
+                <Slide direction="left" in={checked} mountOnEnter unmountOnExit>
+                  {slider}
+                </Slide>
+              </>
+
+              //<div className="sharingan">
+              // <button onClick={function handler() { setpopup(true)}}><Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Mangekyou_Sharingan_Kakashi.svg/640px-Mangekyou_Sharingan_Kakashi.svg.png" /></button>
+              // {/*<PopUp trigger={popup}></PopUp>*/}
+              //</div>
+            ) : ""}
 
           </Box>
           {/* Photo Area */}
@@ -242,7 +284,7 @@ export default function PaginaInicial() {
 
         </Box>
       </Box>
-      <PopUp trigger={popup} setTrigger={setpopup} username={username} pfp={`https://github.com/${username}.png`} name={name} bio={bio} location={location} followers={followers}></PopUp>
+      
     </>
   );
 }

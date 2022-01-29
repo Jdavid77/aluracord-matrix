@@ -68,5 +68,32 @@
     right: 16px;
     height: 20px;
     width: 20px;
+    border-radius: 50%;
+    color: #FFF;
+    background-color: black;
+    cursor: pointer;
+
+}
+
+.close-btn-chat {
+    height: 20px;
+    width: 20px;
+    float: right;
+    border-radius: 50%;
+    color: #FFF;
+    background-color: black;
+    cursor: pointer;
+}
+
+.loader {
+    margin-top: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading {
+    border: none;
+    
 
 }
