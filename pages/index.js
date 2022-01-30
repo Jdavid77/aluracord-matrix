@@ -113,11 +113,11 @@ export default function PaginaInicial() {
         <button className="close-btn" onClick={() => handleChange()}>X</button>
         <Image height="150px" width="150px" src={`https://github.com/${username}.png`}
           styleSheet={{
-            borderRadius: "50%"
+            borderRadius: "100%"
           }}></Image>
-        <p>Nome : {name}</p>
-        <p>Bio : {bio}</p>
-        <p>Localização : {location}</p>
+        <p>Nome : {name || "No Info"}</p>
+        <p>Bio : {bio || "No Info"}</p>
+        <p>Localização : {location || "No Info"}</p>
         <p>Seguidores : {followers}</p>
         <a href={`https://github.com/${username}`}>Visitar</a>
       </div>
@@ -267,7 +267,7 @@ export default function PaginaInicial() {
                     
                   }}
                 />
-                <Slide direction="left" in={checked} mountOnEnter unmountOnExit>
+                <Slide direction="right" in={checked} mountOnEnter unmountOnExit>
                   {slider}
                 </Slide>
               </>

@@ -75,10 +75,20 @@
 
 }
 
-.close-btn-chat {
+.close-btn-chat-others {
     height: 20px;
     width: 20px;
     float: right;
+    border-radius: 50%;
+    color: #FFF;
+    background-color: black;
+    cursor: pointer;
+}
+
+.close-btn-chat-myself {
+    height: 20px;
+    width: 20px;
+    float: left;
     border-radius: 50%;
     color: #FFF;
     background-color: black;
@@ -96,4 +106,13 @@
     border: none;
     
 
+}
+
+.copy {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
+    
 }

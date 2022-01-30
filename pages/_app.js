@@ -1,6 +1,7 @@
 import "../styles.css"
 
 
+
 function GlobalStyle() {
     return (
         <style global jsx>{`
